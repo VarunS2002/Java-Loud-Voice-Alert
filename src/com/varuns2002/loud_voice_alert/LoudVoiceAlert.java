@@ -7,6 +7,8 @@ import javax.sound.sampled.TargetDataLine;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class LoudVoiceAlert {
 
@@ -14,7 +16,7 @@ public class LoudVoiceAlert {
      * The threshold for the volume of the voice.<br>
      * Adjust the value for your own microphone and preferred volume.
      */
-    public static final int THRESHOLD = 520;
+    public static int THRESHOLD = 500;
 
     static class Recorder implements Runnable {
 
@@ -96,6 +98,19 @@ public class LoudVoiceAlert {
     }
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the threshold value: ");
+        int temporaryThreshold;
+        try {
+            temporaryThreshold = scanner.nextInt();
+            if (temporaryThreshold > 0) {
+                THRESHOLD = temporaryThreshold;
+            } else {
+                System.out.println("Invalid threshold value. Using default threshold value.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid threshold value. Using default threshold value.");
+        }
         System.out.println("Starting Loud Voice Alert in 3 seconds...");
         new Thread(new Recorder(System.currentTimeMillis())).start();
     }
