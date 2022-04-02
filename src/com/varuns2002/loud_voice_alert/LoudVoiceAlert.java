@@ -5,15 +5,17 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.TargetDataLine;
 import java.awt.Toolkit;
+import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class LoudVoiceAlert {
 
     /**
-     * The threshold for the volume of the voice.<br>
+     * The default threshold for the volume of the voice.<br>
      * Adjust the value for your own microphone and preferred volume.
      */
     public static int THRESHOLD = 500;
@@ -99,17 +101,36 @@ public class LoudVoiceAlert {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the threshold value: ");
-        int temporaryThreshold;
+        boolean askForThreshold = true;
         try {
-            temporaryThreshold = scanner.nextInt();
-            if (temporaryThreshold > 0) {
-                THRESHOLD = temporaryThreshold;
+            FileInputStream inputStream = new FileInputStream("./config.properties");
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            int thresholdProperty = Integer.parseInt(properties.getProperty("threshold"));
+            if (thresholdProperty > 0) {
+                THRESHOLD = thresholdProperty;
+                askForThreshold = false;
             } else {
+                System.out.println("Invalid threshold value.");
+            }
+            inputStream.close();
+        } catch (Exception e) {
+            System.out.println("Error while reading config.properties file.");
+        }
+
+        if (askForThreshold) {
+            System.out.print("Enter the threshold value: ");
+            int temporaryThreshold;
+            try {
+                temporaryThreshold = scanner.nextInt();
+                if (temporaryThreshold > 0) {
+                    THRESHOLD = temporaryThreshold;
+                } else {
+                    System.out.println("Invalid threshold value. Using default threshold value.");
+                }
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid threshold value. Using default threshold value.");
             }
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid threshold value. Using default threshold value.");
         }
         System.out.println("Starting Loud Voice Alert in 3 seconds...");
         new Thread(new Recorder(System.currentTimeMillis())).start();
