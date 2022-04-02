@@ -2,12 +2,13 @@
 
 ## [Downloads](https://github.com/VarunS2002/Java-Loud-Voice-Alert/releases)
 
-[![Latest: v1.0](https://img.shields.io/badge/release-v1.0-brightgreen)](https://github.com/VarunS2002/Java-Loud-Voice-Alert/releases/download/1.0/Java-Loud-Voice-Alert_1.0.jar)
+[![Latest: v1.0](https://img.shields.io/badge/release-v1.0-brightgreen)](https://github.com/VarunS2002/Java-Loud-Voice-Alert/releases/download/1.0/Java-Loud-Voice-Alert_1.0.zip)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 A simple command line application to alert you by sounding a beep when you speak too loudly.
 
 Example use cases:
+
 - When you're in a meeting and you're not sure if your voice is being heard
 - When you're playing games and casting slurs on voice chat
 - When you're listening to music and speaking
@@ -22,12 +23,12 @@ Example use cases:
 
 - Download the `.jar` (Java Archive) file
 - Method 1:
-  - Place the `config.properties` file in the same directory as the `.jar` file
-  - Enter your preferred threshold value (should be an integer>0) in the `config.properties` file
-  - Run the `.jar` file from the command line using the following command:
-    ```
-    java -jar Java-Loud-Voice-Alert.jar
-    ```
+    - Place the `config.properties` file in the same directory as the `.jar` file
+    - Enter your preferred threshold value (should be an integer>0) in the `config.properties` file
+    - Run the `.jar` file from the command line using the following command:
+      ```
+      java -jar Java-Loud-Voice-Alert.jar
+      ```
 - Method 2:
   - Run the `.jar` file from the command line using the following command:
     ```
