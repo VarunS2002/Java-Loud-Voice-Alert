@@ -2,7 +2,7 @@
 
 ## [Downloads](https://github.com/VarunS2002/Java-Loud-Voice-Alert/releases)
 
-[![Latest: v1.0](https://img.shields.io/badge/release-v1.0-brightgreen)](https://github.com/VarunS2002/Java-Loud-Voice-Alert/releases/download/1.0/Java-Loud-Voice-Alert_1.0.zip)
+[![Latest: v1.1](https://img.shields.io/badge/release-v1.1-brightgreen)](https://github.com/VarunS2002/Java-Loud-Voice-Alert/releases/download/1.1/Java-Loud-Voice-Alert_1.1.zip)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 A simple command line application to alert you by sounding a beep when you speak too loudly.
@@ -14,6 +14,7 @@ Example use cases:
 - When you're listening to music and speaking
 
 #### This program is basically a fork of the Volume Meter built by [Radiodef](https://stackoverflow.com/users/2891664/radiodef) which was posted [here](https://stackoverflow.com/a/26576548/13978447).
+#### Also uses code to emit a beep sound written by [Réal Gagnon](https://www.rgagnon.com/) posted [here](https://www.rgagnon.com/javadetails/java-0499.html).
 
 ## Requirements:
 
